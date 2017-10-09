@@ -1,0 +1,21 @@
+{
+  "name": "jnativel/encryption",
+  "type": "library",
+  "description": "A small PHP class for create, encrypting or decrypting your passwords.",
+  "keywords": ["encryption", "password", "jnativel"],
+  "homepage": "https://github.com/jnativel",
+  "authors": [
+    {
+      "name": "Jimmy NATIVEL",
+      "email": "jimmy@nativel.fr"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "jnativel\\Encryption\\": "src/Encryption/"
+    }
+  }
+}
