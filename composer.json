@@ -4,6 +4,7 @@
   "description": "A small PHP class for create, encrypting or decrypting your passwords.",
   "keywords": ["encryption", "password", "jnativel"],
   "homepage": "https://github.com/jnativel",
+  "license": "MIT",
   "authors": [
     {
       "name": "Jimmy NATIVEL",
