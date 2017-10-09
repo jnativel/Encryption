@@ -39,7 +39,9 @@ class Encryption
      * @return bool
      */
     public function setMasterKey(?string $masterKey){
-        $this->masterKey = (is_null($masterKey)) ? $this->generateKey(32) : $masterKey;
+        if(!is_null($masterKey)){
+            $this->masterKey = (is_null($masterKey)) ? $this->generateKey(32) : $masterKey;
+        }
         return true;
     }
 
