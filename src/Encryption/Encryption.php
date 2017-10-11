@@ -104,13 +104,17 @@ class Encryption
      * Decrypt the given value
      * @param string $value
      * @param string|null $masterKey
-     * @return string
+     * @return null|string
      */
-    public function decrypt(string $value, string $masterKey = null): string
+    public function decrypt(string $value, string $masterKey = null): ?string
     {
         $this->setMasterKey($masterKey);
         $value = explode(':', $this->safe_b64decode($value));
-        return openssl_decrypt($value[0], $this->cipher, $this->masterKey, $options=0, base64_decode($value[1]));
+        if(count($value) == 2){
+            return openssl_decrypt($value[0], $this->cipher, $this->masterKey, $options=0, base64_decode($value[1]));
+        }else{
+            return null;
+        }
     }
 
     /**
