@@ -35,21 +35,19 @@ class Encryption
 
     /**
      * Set the encryption master key
-     * @param string $masterKey
-     * @return bool
+     * @param string|null $masterKey
      */
-    public function setMasterKey(string $masterKey = null){
+    public function setMasterKey(string $masterKey = null): void{
         if(!is_null($masterKey)){
             $this->masterKey = (is_null($masterKey)) ? $this->generateKey(32) : $masterKey;
         }
-        return true;
     }
 
     /**
      * Get the encryption master key
      * @return null|string
      */
-    public function getMasterKey(){
+    public function getMasterKey(): string {
         return $this->masterKey;
     }
 
@@ -132,6 +130,11 @@ class Encryption
         }
     }
 
+    /**
+     * @param $string
+     * @param $length
+     * @return array
+     */
     private function get_string($string, $length): array
     {
         $tmp = [];
@@ -141,6 +144,10 @@ class Encryption
         return $tmp;
     }
 
+    /**
+     * @param $string
+     * @return string
+     */
     private function safe_b64encode($string): string
     {
         $string = base64_encode($string);
@@ -148,6 +155,10 @@ class Encryption
         return trim($string);
     }
 
+    /**
+     * @param $string
+     * @return string
+     */
     private function safe_b64decode($string): string
     {
         $string = str_replace(array('-','_'),array('+','/'),$string);
