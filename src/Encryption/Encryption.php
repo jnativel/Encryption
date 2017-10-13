@@ -37,9 +37,12 @@ class Encryption
      * Set the encryption master key
      * @param string|null $masterKey
      */
-    public function setMasterKey(string $masterKey = null){
-        if(is_null($this->masterKey)){
-            $this->masterKey = (is_null($masterKey)) ? $this->generateKey(32) : $masterKey;
+    private function setMasterKey(string $masterKey = null){
+        $key = $this->generateKey();
+        if(is_null($this->masterKey) && is_null($masterKey)){
+            $this->masterKey = $key;
+        }elseif(!is_null($masterKey)){
+            $this->masterKey = $masterKey;
         }
     }
 
@@ -59,7 +62,7 @@ class Encryption
      * @param bool $symbol
      * @return string
      */
-    public function generateKey(int $length = 12, bool $upper = true, bool $number = true, bool $symbol = true): string
+    public function generateKey(int $length = 16, bool $upper = true, bool $number = true, bool $symbol = true): string
     {
         $masterKeyString = [
             'alpha' => 'abcdefghijkmnopqrstuvwxyz',
