@@ -28,6 +28,7 @@ Example of use by passing the master key directly by the methods:
 require 'vendor/autoload.php';
 $masterKey = "my-secret-key";
 $encryption = new jnativel\Encryption\Encryption();
+$password = $encryption->generateKey(16, true, true, true);
 $str_encrypt = $encryption->encrypt($password, $masterKey);
 $str_decrypt = $encryption->decrypt($str_encrypt, $masterKey);
 var_dump($encryption->getMasterKey());
