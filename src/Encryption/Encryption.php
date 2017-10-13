@@ -37,7 +37,7 @@ class Encryption
      * Set the encryption master key
      * @param string|null $masterKey
      */
-    public function setMasterKey(string $masterKey = null): void{
+    public function setMasterKey(string $masterKey = null){
         if(is_null($this->masterKey)){
             $this->masterKey = (is_null($masterKey)) ? $this->generateKey(32) : $masterKey;
         }
@@ -104,7 +104,7 @@ class Encryption
      * @param string|null $masterKey
      * @return null|string
      */
-    public function decrypt(string $value, string $masterKey = null): ?string
+    public function decrypt(string $value, string $masterKey = null): string
     {
         $this->setMasterKey($masterKey);
         $value = explode(':', $this->safe_b64decode($value));
