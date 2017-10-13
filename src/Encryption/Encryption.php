@@ -38,7 +38,7 @@ class Encryption
      * @param string|null $masterKey
      */
     public function setMasterKey(string $masterKey = null): void{
-        if(!is_null($masterKey)){
+        if(is_null($this->masterKey)){
             $this->masterKey = (is_null($masterKey)) ? $this->generateKey(32) : $masterKey;
         }
     }
@@ -64,7 +64,7 @@ class Encryption
         $masterKeyString = [
             'alpha' => 'abcdefghijkmnopqrstuvwxyz',
             'number' => '0123456789',
-            'symbol' => '#!?$%&*@-_+='
+            'symbol' => '#!?%&*@-_+='
         ];
         $string = [];
         if($upper){
